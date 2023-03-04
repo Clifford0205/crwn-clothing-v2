@@ -12,9 +12,13 @@ const Category = () => {
   const { category } = useParams();
   const categoriesMap = useSelector(selectCategoriesMap);
   console.log('rendering category');
+  console.log('categoriesMap[category]', categoriesMap[category]);
+  console.log('categoriesMap: ', categoriesMap);
+  console.log('category: ', category);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
+    console.log('effect fired calling setProducts');
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
 
@@ -23,7 +27,7 @@ const Category = () => {
       <Title>{category.toUpperCase()}</Title>
       <CategoryContainer>
         {products &&
-          products.map((product) => (
+          products.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
       </CategoryContainer>

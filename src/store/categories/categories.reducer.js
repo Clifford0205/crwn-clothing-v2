@@ -14,7 +14,6 @@ export const categoriesReducer = (
     case CATEGORIES_ACTION_TYPES.SET_CATEGORIES:
       return { ...state, categories: payload };
     default:
-      console.log('categoriesReducer被觸發');
       return state;
   }
 };
