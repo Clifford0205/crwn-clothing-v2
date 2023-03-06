@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 
 import { rootReducer } from './root-reducer';
+import { loggerMiddleware } from './middleware/logger';
 
 const middleWares = [process.env.NODE_ENV === 'development' && logger].filter(
   Boolean
