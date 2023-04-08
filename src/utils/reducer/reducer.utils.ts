@@ -32,14 +32,16 @@ export type Action<T> = {
   type: T;
 };
 
+// 函式超載 Function Overload 
 export function createAction<T extends string, P>(
   type: T,
   payload: P
 ): ActionWithPayload<T, P>;
 
+// overload functions, you must have the same number of parameters.
 export function createAction<T extends string>(
   type: T,
-  payload: void
+  payload: void // 一定要加
 ): Action<T>;
 
 export function createAction<T extends string, P>(type: T, payload: P) {

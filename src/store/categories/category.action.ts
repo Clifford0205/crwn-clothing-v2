@@ -20,9 +20,16 @@ export type FetchCategoriesFailed = ActionWithPayload<
   Error
 >;
 
+
+
 export const fetchCategoriesStart = withMatcher(() =>
   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START)
 );
+
+// 原始寫法
+// export const fetchCategoriesStart = ():FetchCategoriesStart =>
+//   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START)
+// ;
 
 export const fetchCategoriesSuccess = withMatcher(
   (categoriesArray: Category[]) =>
@@ -32,6 +39,19 @@ export const fetchCategoriesSuccess = withMatcher(
     )
 );
 
+// 原始寫法
+// export const fetchCategoriesSuccess =  (categoriesArray: Category[]):FetchCategoriesSuccess=>
+//     createAction(
+//       CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS,
+//       categoriesArray
+//     )
+// ;
+
 export const fetchCategoriesFailed = withMatcher((error: Error) =>
   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error)
 );
+
+// 原始寫法
+// export const fetchCategoriesFailed = (error: Error):FetchCategoriesFailed =>
+//   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error)
+// ;
