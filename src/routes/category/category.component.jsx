@@ -11,6 +11,7 @@ import { CategoryContainer, Title } from './category.styles';
 const Category = () => {
   const { category } = useParams();
   const categoriesMap = useSelector(selectCategoriesMap);
+  console.log('Category');
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const Category = () => {
       <Title>{category.toUpperCase()}</Title>
       <CategoryContainer>
         {products &&
-          products.map((product) => (
+          products.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
       </CategoryContainer>
