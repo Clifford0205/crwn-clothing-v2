@@ -24,6 +24,8 @@ import {
   QueryDocumentSnapshot,
 } from 'firebase/firestore';
 
+import { Category } from '../../store/categories/category.types';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyDDU4V-_QV3M8GyhC9SVieRTDM4dbiT0Yk',
   authDomain: 'crwn-clothing-db-98d4d.firebaseapp.com',
@@ -69,26 +71,13 @@ export const addCollectionAndDocuments = async <T extends ObjectToAdd>(
   console.log('done');
 };
 
-type CategoryItem = {
-  id: number;
-  imageUrl: string;
-  name: string;
-  price: number;
-};
-
-type CategoryData = {
-  imageUrl: string;
-  items: CategoryItem[];
-  title: string;
-};
-
-export const getCategoriesAndDocuments = async (): Promise<CategoryData[]> => {
+export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
   const collectionRef = collection(db, 'categories');
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map(
-    (docSnapshot) => docSnapshot.data() as CategoryData
+    (docSnapshot) => docSnapshot.data() as Category
   );
 };
 
